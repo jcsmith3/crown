@@ -1,10 +1,12 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import './MenuItem.sass'
 
-const MenuItem = props => {
-  return (
-    <div className='menu-item'>
+const MenuItem = ({ match, history, ...props })=> (
+    <div
+      onClick={() => history.push(`/shop/${props.title}`)}
+      className='menu-item'>
       <div
         style={{
           backgroundImage: `url(${props.imageUrl})`
@@ -15,7 +17,6 @@ const MenuItem = props => {
           <span className='subtitle'>Shop now</span>
         </div>
     </div>
-  )
-}
+)
 
-export default MenuItem
+export default withRouter( MenuItem )
